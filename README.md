@@ -10,4 +10,4 @@ Open `index.html` in a browser, or visit the GitHub Pages site: https://c0resmit
 
 ## Deploy
 
-Pushes to `main` publish the repository root with GitHub Actions (`.github/workflows/pages.yml`). Pages is configured to build from GitHub Actions.
+Pushes to `main` publish the repository root with GitHub Actions (`.github/workflows/pages.yml`). The GitHub Pages source is GitHub Actions.
