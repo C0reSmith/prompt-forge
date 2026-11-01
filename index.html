@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Prompt Forge — Free Grok Prompt Builder</title>
-<meta name="description" content="Turn a rough idea into a sharp, structured Grok prompt for live research, X listening, competitor scans and posts. Free, runs in your browser.">
+<title>Prompt Forge — Free AI Prompt Generator</title>
+<meta name="description" content="Turn a rough idea into a sharp, structured prompt for ChatGPT, Claude, Gemini, Grok, and other AIs. Free, runs in your browser.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚒️</text></svg>">
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -25,13 +25,19 @@
 <section class="hero">
   <div class="wrap">
     <span class="pill">Free · No signup · 100% in your browser</span>
-    <h1>Forge better <span class="grad">Grok prompts</span> in seconds</h1>
-    <p class="lead">Describe what you need in plain words. Prompt Forge adds the parts Grok needs to give a sharp answer — a time window, where to search, who it's for, and exactly how to format the result.</p>
+    <h1>Forge better <span class="grad">AI prompts</span> in seconds</h1>
+    <p class="lead">Describe what you need in plain words. Prompt Forge adds a time window, where to look, who it's for, and the format of the answer — then tunes the wording for the AI you pick.</p>
   </div>
 </section>
 
 <section id="builder" class="wrap builder">
   <div class="card">
+    <div class="field">
+      <label class="lbl" id="target-lbl">Target AI</label>
+      <div class="chips" id="models" role="group" aria-labelledby="target-lbl"></div>
+      <p class="muted small model-note">Wording, search options, and Open follow this choice.</p>
+    </div>
+
     <div class="field">
       <label class="lbl">1 · What are you doing?</label>
       <div class="chips" id="usecases"></div>
@@ -43,9 +49,9 @@
       <div class="examples">
         <span>Try one:</span>
         <button class="ex" data-ex="0">This week's market news</button>
-        <button class="ex" data-ex="1">Buzz about a product on X</button>
+        <button class="ex" data-ex="1">Buzz about a product</button>
         <button class="ex" data-ex="2">Compare competitors</button>
-        <button class="ex" data-ex="3">Turn notes into a thread</button>
+        <button class="ex" data-ex="3">Turn notes into a post</button>
       </div>
     </div>
 
@@ -81,8 +87,6 @@
           <select id="sources">
             <option value="auto">Auto</option>
             <option value="web">The web</option>
-            <option value="x">Posts on X</option>
-            <option value="both">Web + X</option>
             <option value="none">No search (use what I give you)</option>
           </select>
         </div>
@@ -107,7 +111,7 @@
           <label><input type="checkbox" id="cite" checked> Ask for dated source links</label>
           <label><input type="checkbox" id="facts" checked> Keep facts apart from opinion</label>
           <label><input type="checkbox" id="reason"> Reason step by step</label>
-          <label><input type="checkbox" id="noedge"> Tone down the edgy voice</label>
+          <label><input type="checkbox" id="noedge"> <span id="noedge-lbl">Skip jokes and sarcasm</span></label>
         </div>
       </div>
     </details>
@@ -116,28 +120,28 @@
 
     <div id="out" class="out hidden">
       <div class="out-head">
-        <strong>Your Grok prompt</strong>
+        <strong id="outtitle">Your prompt</strong>
         <span id="stats" class="muted"></span>
         <div class="out-actions">
-          <button id="copy" class="btn">Copy</button>
-          <a id="open" class="btn" target="_blank" rel="noopener">Open in Grok ↗</a>
+          <button id="copy" class="btn" type="button">Copy</button>
+          <button id="open" class="btn" type="button">Copy to paste</button>
         </div>
       </div>
       <textarea id="result" rows="14" spellcheck="false"></textarea>
-      <p class="muted small">Edit freely, then paste into grok.com, the Grok app, or Grok on X.</p>
+      <p id="outhint" class="muted small">Edit freely, then paste it into whichever AI you use.</p>
     </div>
   </div>
 </section>
 
 <section class="wrap section" id="why">
-  <h2>Why Grok needs a better prompt</h2>
-  <p>Grok shines when the answer depends on <em>right now</em>: it can search the web and X live. But a one-liner tends to get a loose, chatty reply that mixes last year's news with today's. A good prompt pins down the job, the window, the sources and the shape of the answer — that's all Prompt Forge does, consistently, every time.</p>
+  <h2>Why a one-line prompt falls short</h2>
+  <p>A one-liner tends to get a loose, chatty reply that mixes last year's news with today's and ignores the format you wanted. A good prompt pins down the job, the window, the sources, and the shape of the answer. Prompt Forge does that every time, and adjusts the wording for the model you select.</p>
   <div class="features">
     <div class="feat"><div class="ico">🕒</div><h3>A time window</h3><p>"Past week" or "since the March launch" stops old and new from blending together.</p></div>
-    <div class="feat"><div class="ico">🔎</div><h3>Where to search</h3><p>Web, X or both — plus a request for links and dates you can check.</p></div>
+    <div class="feat"><div class="ico">🔎</div><h3>Where to look</h3><p>Web search and citations by default. Posts on X appear only when the target is Grok.</p></div>
     <div class="feat"><div class="ico">⚖️</div><h3>Facts vs. chatter</h3><p>On social topics, verified changes are kept separate from what people claim.</p></div>
     <div class="feat"><div class="ico">🎯</div><h3>A named reader</h3><p>Saying who will read it changes depth and tone more than any adjective.</p></div>
-    <div class="feat"><div class="ico">📐</div><h3>A clear format</h3><p>Table, bullets, memo, email — Grok defaults to prose unless you ask.</p></div>
+    <div class="feat"><div class="ico">📐</div><h3>A clear format</h3><p>Table, bullets, memo, email — models default to prose unless you ask.</p></div>
     <div class="feat"><div class="ico">🧠</div><h3>Reasoning on demand</h3><p>For trade-offs, ask for assumptions first and the recommendation last.</p></div>
   </div>
 </section>
@@ -152,7 +156,7 @@
 </section>
 
 <section class="wrap section" id="tips">
-  <h2>Five habits that improve Grok's answers</h2>
+  <h2>Five habits that improve AI answers</h2>
   <ol class="tips">
     <li><strong>Tell it to search.</strong> If freshness matters, say "search and cite" — otherwise it may answer from memory.</li>
     <li><strong>Attach, don't describe.</strong> Upload the actual report or transcript and say what to pull out.</li>
@@ -165,14 +169,15 @@
 <section class="wrap section" id="faq">
   <h2>FAQ</h2>
   <details class="faq"><summary>Is Prompt Forge free?</summary><p>Yes. No account, no limits, no API key. Everything runs in your browser.</p></details>
-  <details class="faq"><summary>Does it send my idea anywhere?</summary><p>No. Prompts are assembled locally with JavaScript from proven templates — nothing leaves your device until you paste it into Grok yourself.</p></details>
-  <details class="faq"><summary>Will these prompts work in ChatGPT, Claude or Gemini?</summary><p>Mostly, yes. The structure works anywhere; the "search X" instructions are Grok-specific, so pick "The web" as the source for other assistants.</p></details>
-  <details class="faq"><summary>Can it make image prompts for Grok Imagine?</summary><p>This builder is for text work — research, analysis, writing and planning. Visual prompts need different ingredients (subject, composition, lighting).</p></details>
+  <details class="faq"><summary>Does it send my idea anywhere?</summary><p>No. Prompts are assembled locally in your browser. Nothing leaves your device until you copy the prompt or open it in an AI yourself.</p></details>
+  <details class="faq"><summary>Which AIs does it support?</summary><p>ChatGPT, Claude, Gemini, Grok, Perplexity, Copilot, Meta AI, and DeepSeek, plus Any / Generic for a prompt that works anywhere. The default is Any / Generic. Pick a target and the wording follows that model.</p></details>
+  <details class="faq"><summary>What does the Open button do?</summary><p>ChatGPT, Claude, Perplexity, and Grok open with your prompt filled in. Gemini, Copilot, Meta AI, DeepSeek, and Any / Generic have no reliable prefill link, so the button copies the prompt and tells you where to paste it. Copy always copies.</p></details>
+  <details class="faq"><summary>Can it make image prompts?</summary><p>This builder is for text work — research, analysis, writing, and planning. Image prompts need different ingredients (subject, composition, lighting).</p></details>
   <details class="faq"><summary>Why does the wording matter so much?</summary><p>Studies have shown that formatting and small instruction changes can swing model accuracy dramatically. A consistent structure removes guesswork.</p></details>
 </section>
 </main>
 
-<footer class="foot"><div class="wrap">⚒ Prompt Forge · An independent tool, not affiliated with xAI or Grok.</div></footer>
+<footer class="foot"><div class="wrap">⚒ Prompt Forge · An independent tool, not affiliated with any AI company.</div></footer>
 <div id="toast" class="toast">Copied to clipboard</div>
 <script src="app.js"></script>
 </body>

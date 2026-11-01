@@ -1,8 +1,12 @@
 # Prompt Forge
 
-A free, client-side Grok prompt builder. Type a rough idea in the browser and Prompt Forge turns it into a structured prompt: a time window, where to search (the web, X, or both), who the answer is for, and how to format the result. Research, social listening, competitor scans, meeting prep, posts, file analysis, and decisions each use their own template.
+A free, client-side AI prompt generator. Type a rough idea in the browser, pick a target model, and Prompt Forge turns it into a structured prompt: a time window, where to look, who the answer is for, and how to format the result.
 
-Everything runs locally. There is no build step, no account, and no server — `index.html`, `styles.css`, and `app.js` are the whole site. Nothing is sent anywhere until you copy the prompt or open it in Grok yourself.
+Targets are ChatGPT, Claude, Gemini, Grok, Perplexity, Copilot, Meta AI, DeepSeek, and Any / Generic (the default). The wording follows the model. Posts on X show up only for Grok. Perplexity prompts ask for cited web sources. Claude prompts use labeled sections. ChatGPT, Claude, Perplexity, and Grok can open with the prompt filled in. The others copy it so you can paste. Copy always works.
+
+Research, social listening, competitor scans, meeting prep, posts, file analysis, and decisions each use their own template.
+
+Everything runs locally. There is no build step, no account, and no server — `index.html`, `styles.css`, and `app.js` are the whole site. Nothing is sent anywhere until you copy the prompt or open it in an AI yourself.
 
 ## Use it
 

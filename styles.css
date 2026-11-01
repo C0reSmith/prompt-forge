@@ -46,10 +46,11 @@ textarea{resize:vertical}
 .out.hidden{display:none}
 .out-head{display:flex;align-items:center;gap:12px;margin-bottom:10px;flex-wrap:wrap}
 .out-actions{margin-left:auto;display:flex;gap:8px}
-.btn{background:var(--panel2);border:1px solid var(--line);color:var(--txt);padding:7px 14px;border-radius:10px;cursor:pointer;font-size:14px;text-decoration:none}
+.btn{background:var(--panel2);border:1px solid var(--line);color:var(--txt);padding:7px 14px;border-radius:10px;cursor:pointer;font:14px inherit;text-decoration:none}
 .btn:hover{border-color:var(--acc)}
 #result{font:14px/1.55 ui-monospace,SFMono-Regular,Menlo,monospace;background:#090b10}
 .muted{color:var(--muted)}.small{font-size:13px}
+.model-note{margin:8px 0 0}
 .section{padding:64px 20px 8px}
 h2{font-size:30px;letter-spacing:-.01em;margin:0 0 14px}
 .section>p{color:#b7bccb;max-width:760px}
